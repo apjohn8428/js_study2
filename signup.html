@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 가입</title>
+</head>
+<body>
+    <h2>회원 가입</h2>
+    <form>
+        아이디: <input type="text" id="userID"> <br>
+        비밀번호: <input type="password" id="password"> <br>
+        비밀번호 확인: <input type="password" id="passwordCheck"> <br>
+        이름: <input type="text" id="userName"> <br>
+        이메일: <input type="email" id="userEmail"> <br>
+        <button type="submit" onclick="checkSignup()">회원 가입</button>
+        <button type="reset">취소</button>
+    </form>
+
+    <script>
+        function checkSignup() {
+            let userID = document.getElementById("userID").value.trim();
+            let password = document.getElementById("password").value.trim();
+            let passwordCheck = document.getElementById("passwordCheck").value.trim();
+            let userName = document.getElementById("userName").value.trim();
+            let userEmail = document.getElementById("userEmail").value.trim();
+
+            if(userID === "") {
+                alert("아이디를 입력하세요");
+                return false;
+            }
+
+            if(userID.length < 5) {
+                alert("5자 이상 입력하세요");
+                return false;
+            }
+
+            if(password === "") {
+                alert("비밀번호를 입력하세요");
+                return false;
+            }
+
+            if(password.length < 5) {
+                alert("5자 이상 입력하세요");
+                return false;
+            }
+
+            if(password !== passwordCheck) {
+                alert("비밀번호와 비밀번호 확인이 불일치합니다");
+                return false;
+            }
+
+            if(userName === "") {
+                alert("이름을 입력하세요");
+                return false;
+            }
+
+            if(userEmail === "") {
+                alert("이메일을 입력하세요");
+                return false;
+            }
+
+            // 이메일 형식 검사
+            if(!userEmail.includes("@") || !userEmail.includes(".")) { // @와 .이 없으면 이메일 형식이 아님
+                alert("올바른 형식을 입력하세요");
+                return false;
+            }
+
+            alert("회원 가입이 완료되었습니다");
+            return true;
+        }
+    </script>
+</body>
+</html>
