@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 로그인</title>
+</head>
+<body>
+    <h2>로그인</h2>
+    <form>
+        아이디: <input type="text" id="userID" name="userID"> <br><br>
+        비밀번호: <input type="password" id="password" name="password"> <br><br>
+        <button type="submit" onclick="checklogin()">로그인</button>
+        <button type="reset">취소</button>
+    </form>
+
+    <script>
+        function checklogin() {
+            // 유저가 입력한 아이디와 비밀번호를 가져와 저장하기
+            let userID = document.getElementById("userID").value.trim();
+            let password = document.getElementById("password").value.trim();
+
+            if(userID === "") {
+                alert("아이디를 입력하세요");
+                return false; // return 실행 ->함수 종료
+            }
+
+            if(password === "") {
+                alert("비밀번호를 입력하세요");
+                return false;
+            }
+
+            return true; // 백엔드에 정상적으로 제출
+        }
+    </script>
+</body>
+</html>
