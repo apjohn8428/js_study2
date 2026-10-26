@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>커피 전문점 키오스크</title>
+</head>
+<body>
+    <h1>커피 전문점 키오스크</h1>
+
+    <h2>메뉴 선택</h2>
+    <hr>
+    <p>
+        아메리카노: 2,000원
+        <input type="number" id="pro1" value="0" min="0"> <!--min은 최솟값 설정 -> 없으면 음수가 나올 수 있음--> 
+    </p>
+
+    <p>
+        카페 라떼: 3,000원
+        <input type="number" id="pro2" value="0" min="0">
+    </p>
+
+    <p>
+        딸기 라떼: 4,000원
+        <input type="number" id="pro3" value="0" min="0">
+    </p>
+    <hr>
+
+    <button type="button" onclick="order()">주문하기</button>
+    <button type="reset" onclick="reset()">초기화</button>
+    <hr><hr>
+    <h2>주문 내역</h2>
+    <p id="result1">
+        아메리카노: 0잔 0원
+    </p>
+    <p id="result2">
+        카페 라떼: 0잔 0원
+    </p>
+    <p id="result3">
+        딸기 라떼: 0잔 0원
+    </p>
+
+    <h2 id="total">총 결제 금액: 0원</h2>
+
+    <script>
+        const price1 = 2000; // 아메리카노 가격
+        const price2 = 3000; // 카페 라떼 가격
+        const price3 = 4000; // 딸기 라떼 가격
+
+        function order() {
+            // 각 음료 수량
+            let pro1 = document.getElementById("pro1").value; // 아메리카노 수량
+            let pro2 = document.getElementById("pro2").value; // 카페 라떼 수량
+            let pro3 = document.getElementById("pro3").value; // 딸기 라떼 수량
+
+            // 메뉴별 가격 계산
+            let total1 = price1 * pro1; // 아메리카노 총 가격
+            let total2 = price2 * pro2; // 카페 라떼 총 가격
+            let total3 = price3 * pro3; // 딸기 라떼 총 가격 
+
+            // 주문 총액
+            let total = total1 + total2 + total3;
+
+            // 주문 내역 출력
+            document.getElementById("result1").textContent = "아메리카노: " + pro1 + "잔 " + total1 + "원"
+            document.getElementById("result2").textContent = "카페 라떼: " + pro2 + "잔 "  + total2 + "원"
+            document.getElementById("result3").textContent = "딸기 라떼: " + pro3 + "잔 "  + total3 + "원"
+
+            // 총 결제 금액
+            document.getElementById("total").textContent = "총 결제 금액: " + total + "원";
+        }
+
+        function reset() {
+            // 주문 수량 초기화
+            document.getElementById("pro1").value = 0;
+            document.getElementById("pro2").value = 0;
+            document.getElementById("pro3").value = 0;
+
+            // 주문 내역 초기화
+            document.getElementById("result1").textContent = "아메리카노: 0잔 0원" 
+            document.getElementById("result2").textContent = "카페 라떼: 0잔 0원 " 
+            document.getElementById("result3").textContent = "딸기 라떼: 0잔 0원"
+            document.getElementById("total").textContent = "총 결제 금액: 0잔 0원"
+        }
+    </script>
+</body>
+</html>
