@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상품 할인율 계산</title>
+</head>
+<body>
+    <h1>상품 10% 할인 계산</h1>
+    <hr>
+    상품가격: <input type="number" id="price" min="0" placeholder="가격 입력"> <br><br>
+    <button onclick="discount()">할인 계산</button>
+    <hr>
+    <p id="result">
+        <!--이 자리에 입력된 상품 가격의 할인가격을 출력-->
+    </p>
+
+    <script>
+        const disrate = 0.1;
+
+        function discount() {
+            let price = document.getElementById("price").value;
+
+            let disprice = price * (1 - disrate);
+
+            document.getElementById("result").textContent = disprice;
+
+            if(price === "" || price < 0) {
+                alert("상품 가격을 입력하세요");
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
